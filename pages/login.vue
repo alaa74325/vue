@@ -1,27 +1,35 @@
 <template>
     <div class="login-page">
         <div class="slider-content">
-            <slider-component></slider-component>
+            <LoginSliderComponent></LoginSliderComponent> 
         </div>
         <div class="form-content">
-            <text-login-co></text-login-co>
-            <login-form-component></login-form-component>
+            <LoginTextLoginCo></LoginTextLoginCo>
+            <LoginFormComponent></LoginFormComponent>
         </div> 
     </div>
 </template>
 
 <style scoped lang="scss">
-
+.login-page{
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    >*{
+        width:50%;
+    }
+} 
+.form-content{
+        #inspire{
+            margin: 0px auto;
+            .v-text-field--outlined fieldset{
+                top:0;
+                
+            }
+        }
+}
 </style>
 <script>
-import SliderComponent from '~/components/slider-component.vue';
-import "../assets/styles/main.scss";
-import "../assets/styles/sign-in.scss"
-import TextLoginCo from "../components/text-login-co.vue";
-export default{
-    components: { TextLoginCo, SliderComponent }
-}
-
-
 
 </script>

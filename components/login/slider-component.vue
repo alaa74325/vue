@@ -33,8 +33,13 @@
     </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss"  scoped>
 
+$background-slider:#2a5dc4;
+$btn-background:#6E95E9;
+$font-collor:#999;
+$border-color:#d9d9d9;
+$font-family: 'Montserrat', sans-serif;
 div.inner-slider{ 
     overflow: hidden; 
     background-color:#2a5dc4;

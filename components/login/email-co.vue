@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="email-co">
         <v-text-field
                         outlined
                         label="Email"
@@ -9,12 +9,14 @@
                             outlined
                             label="Password"
                             append-icon="mdi-lock"
-        ></v-text-field> 
+        ></v-text-field>
+        <div class="check-field">
+                    <input type="checkbox" name="remember-me" id="remember-me">
+                    <label for="remember-me">Remember Me</label>
+                    <span>Recovery Password</span>
+        </div> 
     </div>
 </template>
-<style scoped lang="scss">
-.v-application--is-ltr, .v-text-field .v-label {
-    background: #fff;
-    padding: 0 1px;
-}
+<style lang="scss">
+
 </style>
