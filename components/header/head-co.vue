@@ -35,7 +35,7 @@ $activeColor:#0061ff;
     width:48%
 }
 .container-m{
-    width: 85% !important;
+    width: 84% !important;
     padding:10px 0;
     margin:0  auto !important;
     display:flex;

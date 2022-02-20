@@ -11,9 +11,9 @@
     overflow: hidden;
     display: block;
     .search-area{
-        height: 100px;
+        height: 130px;
         width:100%;
-        border-radius: 20px;
+        border-radius: 15px;
         background: #fff;
         margin-bottom: 20px;
     }

@@ -10,7 +10,7 @@
     width:100%;
     >div{
         background: #fff;
-        border-radius: 20px;
+        border-radius: 15px;
         height: 350px;
         width: 100%; 
     }
