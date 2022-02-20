@@ -2,13 +2,13 @@
     <div class="user-page">
         <div class="container-m">
             <div class="left-side col-3-m">
-                <UserLeftSide/>
+                <UserLeftSide></UserLeftSide>
             </div>
             <div class="posts-content col-6-m">
-                <UserPostsArea/>
+                <UserPostsArea></UserPostsArea>
             </div>
             <div class="right-side col-3-m" >
-                <UserRightSide/>
+                <UserRightSide></UserRightSide>
             </div>
         </div>
     </div>
