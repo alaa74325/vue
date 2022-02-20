@@ -2,10 +2,10 @@
     <div class="new-photo">
         <div class="mentions">
             <n-link to=""><img src="../../assets/images/user3.jpg"></n-link>
-            <n-link to=""><p>dr.aliali<span>Liked your<br> Photo.</span><span class="time">1m</span></p></n-link>
+            <n-link to=""><p>dr.aliali<span> liked your<br> photo.</span><span class="time">1m</span></p></n-link>
             
         </div>
-        <n-link to=""><img src="../../assets/images/post-img.png" class="post-img"></n-link>
+        <n-link to=""><img src="../../assets/images/post-img.jpg" class="post-img"></n-link>
     </div>
 </template>
 <style scoped lang="scss">

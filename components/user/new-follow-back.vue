@@ -2,7 +2,7 @@
     <div class="new-follow-back">
         <div class="mentions">
             <n-link to=""><img src="../../assets/images/user2.jpg"></n-link>
-            <n-link to=""><p>alaa<span>Started<br> Following you.</span><span class="time">1m</span></p></n-link>
+            <n-link to=""><p>alaa<span> started<br> following you.</span><span class="time">1m</span></p></n-link>
         </div>
         <n-link to=""><i class="uil uil-user-plus icon"></i></n-link>
     </div>
@@ -25,7 +25,6 @@ a i.icon{
 }
 .new-follow-back{
     width:100%;
-    display: block;
     display: flex;
     justify-content: space-between;
     h4{
