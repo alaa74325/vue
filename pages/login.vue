@@ -9,6 +9,11 @@
         </div> 
     </div>
 </template>
+<script>
+export default {
+    layout: "empty"
+};
+</script>
 
 <style scoped lang="scss">
 .login-page{
@@ -30,6 +35,3 @@
         }
 }
 </style>
-<script>
-
-</script>

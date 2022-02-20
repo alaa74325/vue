@@ -24,6 +24,9 @@
         </div>    
 </template>
 <script>
+export default {
+    layout: "empty"
+};
 </script>
 <style  lang="scss"  >
 $background-slider:#2a5dc4;
@@ -78,7 +81,6 @@ $font-family: 'Montserrat', sans-serif;
             background: $background-slider;
             overflow: hidden;
         }
-         
 }
 /* */
 .check-field {

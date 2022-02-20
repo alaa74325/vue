@@ -80,8 +80,11 @@ export default{
     },
     props:[],
     methods:{
-        loader(){
+        loader:function(){
             document.getElementsByClassName('load').css("display","block");
+        },
+        prevent:function(event){
+                event.preventDefault();
         }
     }
 }
