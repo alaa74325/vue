@@ -32,7 +32,6 @@
                     </div>
                 </div>
                 <div class="comment-area">
-
                 </div>
             </div>
         </div>
