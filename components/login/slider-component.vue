@@ -45,10 +45,11 @@ div.inner-slider{
     background-color:#2a5dc4;
     .carousel-item{
         padding-top: 80px;
+        height: 100vh;
     }
     img {
-        width: 413px !important;
-        height: 700px;
+        width: 60% !important;
+        height: 90%;
         margin: 0 auto;
     }
 }

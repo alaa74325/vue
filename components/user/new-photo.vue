@@ -3,7 +3,6 @@
         <div class="mentions">
             <n-link to=""><img src="../../assets/images/user3.jpg"></n-link>
             <n-link to=""><p>dr.aliali<span> liked your<br> photo.</span><span class="time">1m</span></p></n-link>
-            
         </div>
         <n-link to=""><img src="../../assets/images/post-img.jpg" class="post-img"></n-link>
     </div>

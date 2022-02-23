@@ -1,7 +1,7 @@
 <template>
     <div class="btn">
-        <input type="submit" value="Login" />
-        <div class="load">
+        <input type="submit" value="Login"/>
+        <div class="load" >
             <span class="spiner"></span>
         </div>
     </div>
@@ -79,13 +79,5 @@ export default{
     }
     },
     props:[],
-    methods:{
-        loader:function(){
-            document.getElementsByClassName('load').css("display","block");
-        },
-        prevent:function(event){
-                event.preventDefault();
-        }
-    }
 }
 </script>

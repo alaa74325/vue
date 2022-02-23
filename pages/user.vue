@@ -30,4 +30,26 @@ $activeColor:#0061ff;
         }
     }
 }
+@media (max-width:1024px) {
+    .col-6-m{
+        width: 65%;
+    }
+    .col-3-m{
+        width: 32%;
+    }
+    .container-m{
+        width: 93%;
+    }
+    .left-side{
+        display: none;
+    }
+}
+@media (max-width:900px) {
+    .posts-content{
+        width: 100%;
+    }
+    .right-side,.left-side{
+        display: none;
+    }
+}
 </style>

@@ -6,11 +6,11 @@
             </div>
             <div class="menu col-6-m">
                 <ul>
-                    <li><n-link to=""><i class="uil uil-estate active-li"></i></n-link></li>
-                    <li><n-link to=""><i class="uil uil-compass"></i></n-link></li>
-                    <li><n-link to=""><i class="uil uil-bag-alt"></i></n-link></li>
-                    <li><n-link to=""><i class="uil uil-bell"></i></n-link></li>
-                    <li><n-link to=""><i class="uil uil-envelope-heart"></i></n-link></li>
+                    <li><n-link to="" @click="active()"><i class="uil uil-estate active-li"></i></n-link></li>
+                    <li><n-link to=""  @click="active()"><i class="uil uil-compass"></i></n-link></li>
+                    <li><n-link to="" @click="active()"><i class="uil uil-bag-alt"></i></n-link></li>
+                    <li><n-link to=""  @click="active()"><i class="uil uil-bell"></i></n-link></li>
+                    <li><n-link to=""  @click="active()"><i class="uil uil-envelope-heart"></i></n-link></li>
                 </ul>
             </div>
             <div class="right-menu col-3-m">
@@ -106,8 +106,9 @@ $activeColor:#0061ff;
 <script>
 export default{
     methods: {
-        active:function(event){
-            console.log(this.active);
+        active: function(){
+            console.log("hi");
+            $this.$el.classList.add("active-li");
         }
     },
 }   

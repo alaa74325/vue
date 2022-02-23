@@ -2,16 +2,35 @@
     <div class="posts-content">
         <div class="search-area">
             <div class="container-m">
+                <div class="filter-box">
+                    <n-link to=""><i class="uil uil-plus"></i><span>Books</span></n-link>
+                    <n-link to=""><i class="uil uil-plus"></i><span>Groups</span></n-link>
+                    <n-link to=""><i class="uil uil-plus"></i><span>Students</span></n-link>
+                </div>
                 <div class='search-input'>
                     <input type="text" placeholder="Search for creators,inspirations,projects">
                     <i class="uil uil-search"></i>
+                    <n-link to="">Search</n-link>
                 </div>
             </div>
         </div>
-        <UserCardPost/>
+        <UserPhotoPost/>
+        <UserVotingPost />
+        <UserPhotosPost/>
+        <UserFilePost/>
     </div>
 </template>
+<script>
+export default {
+    data(){
+        n:''
+    },
+}
+</script>
 <style scoped lang="scss">
+$bodyColor:#f3f5f7;
+$spanColor:#aeb2bb;
+$filter-color:#89a0fd;
 .container-m{
     width: 92% !important;
     display: block;
@@ -20,13 +39,14 @@
     width: 100%;
     position: relative;
     font-weight: 400;
+    margin-bottom: 10px;
     input{
         width: 100%;
-        background: #f3f5f7;
+        background: $bodyColor;
         border-radius: 20px;
         line-height: 42px !important;
         font-size: 16px;
-        color:#5a5f6a;
+        color:$spanColor;
         outline: none;
         padding-left: 47px;
     }
@@ -34,9 +54,24 @@
             position: absolute;
             top: 10%;
             left: 15px;
-            font-size: 20px;
+            font-size: 17px;
             font-weight: 400;
+            color: $spanColor;
     }
+    a{
+            background: $filter-color;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 700;
+            border-radius: 15px;
+            position: absolute;
+            text-decoration: none;
+            right: 6px;
+            top: 5px;
+            line-height: 32px;
+            padding: 0 17px;
+            text-transform: uppercase;
+        }
 }
 .posts-content{
     width: 100%;
@@ -48,6 +83,30 @@
         border-radius: 15px;
         background: #fff;
         margin-bottom: 20px;
+        
+    }
+}
+.filter-box{
+    display: flex;
+    margin: 10px auto;
+    a{
+        line-height: 30px;
+        padding: 5px ;
+        margin-right: 10px;
+        background:$bodyColor;
+        border-radius: 12px;
+        display: flex;
+        text-decoration: none;
+        font-size: 15px;
+        font-weight: 700;
+        color: $spanColor;
+        *{
+            margin-right: 5px;
+        }
+        i{
+            font-size: 16px;
+            color: $filter-color;
+        }
     }
 }
 </style>
