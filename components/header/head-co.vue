@@ -2,7 +2,7 @@
     <div class="head-content">
         <div class="container-m">
             <div class="logo col-3-m">
-                    <img src="">
+                    <h1>Nadres</h1>
             </div>
             <div class="menu col-6-m">
                 <ul>
@@ -41,11 +41,18 @@ $activeColor:#0061ff;
     display:flex;
     justify-content: space-between;
 }
+
 .active-li{
     color:$activeColor;
 }
 /* Start styling */
-
+.logo h1{
+    color:$activeColor;
+    font-family: 'Satisfy', cursive;
+    font-size: 25px;
+    padding: 0;
+    margin: 0;
+}
 
 .head-content{
     width:100%;

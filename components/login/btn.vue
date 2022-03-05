@@ -1,7 +1,7 @@
 <template>
     <div class="btn">
-        <input type="submit" value="Login"/>
-        <div class="load" >
+        <button @click="loading=!loading">Login</button>
+        <div class="load" v-if="loading">
             <span class="spiner"></span>
         </div>
     </div>
@@ -19,7 +19,7 @@ $font-family: 'Montserrat', sans-serif;
     position: relative;
     margin-bottom: 6px;
     line-height:35px;
-    input{
+    button{
         width: 100%;
         outline: none;
         border:none;
@@ -33,20 +33,19 @@ $font-family: 'Montserrat', sans-serif;
         width:100%;
         z-index: 1;
         background: $background-slider;
-        display: none;
         span{
-                border: 2px solid #999;
-                border-top-color: #999;
-                border-right-color: #c2c1c1;
-                border-bottom-color: #d9d9d9;
-                border-left-color: #fff;
-                animation: spiner-data-v-478f490b 1s 3 ease-in-out;
-                transition: 0.4s ;
-                width: 20px;
-                height: 20px;
-                display: block;
-                margin: 8px auto;
-                border-radius: 50%;
+            border: 2px solid #999;
+            border-top-color: #999;
+            border-right-color: #c2c1c1;
+            border-bottom-color: #d9d9d9;
+            border-left-color: #fff;
+            animation: spiner-data-v-478f490b 1s 3 ease-in-out;
+            transition: 0.4s ;
+            width: 20px;
+            height: 20px;
+            display: block;
+            margin: 10px auto;
+            border-radius: 50%;
         }
 
     }
@@ -59,25 +58,17 @@ $font-family: 'Montserrat', sans-serif;
         transform: rotate(360deg);
     }
 }
-.v-btn--plain:not(.v-btn--active):not(.v-btn--loading):not(:focus):not(:hover) .v-btn__content {
-    opacity: 1;
-}
-.v-btn:not(.v-btn--round).v-size--default {
-    padding: 21px 7px;
-    color: #fff;
-    background: #2a5dc4;
-}
 
 </style>
 <script>
-
 export default{
     data () {
     return {
         loading: false,
-        pageName:'Login',
     }
     },
     props:[],
+    methods:{
+    }
 }
 </script>

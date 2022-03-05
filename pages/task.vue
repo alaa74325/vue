@@ -1,14 +1,14 @@
 <template>
-    <div class="user-page">
+    <div class="task-page">
         <div class="container-m">
-            <div class="left-side col-3-m">
-                <UserLeftSide></UserLeftSide>
+            <div class="left-side">
+                <TaskLeft></TaskLeft>
             </div>
-            <div class="posts-content col-6-m">
-                <UserPostsArea></UserPostsArea>
+            <div class="center">
+                <TaskCenter></TaskCenter>
             </div>
-            <div class="right-side col-3-m" >
-                <UserRightSide></UserRightSide>
+            <div class="right-side" >
+                <TaskRight></TaskRight>
             </div>
         </div>
     </div>
@@ -19,11 +19,18 @@
 $iconColor:#94949f;
 $bodyColor:#f3f5f7;
 $activeColor:#0061ff;
-.container-m{
-    width: 90% !important;
+
+.left-side{
+    width: 17%;
+}
+.center{
+    width: 52%;
+}
+.right-side{
+    width: 28%;
 }
 /* general classes*/
-.user-page{
+.task-page{
     background: $bodyColor;
     >div.container-m{
         >div{
@@ -48,7 +55,7 @@ $activeColor:#0061ff;
     }
 }
 @media (max-width:900px) {
-    .posts-content{
+    .center{
         width: 100%;
     }
     .right-side,.left-side{

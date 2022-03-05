@@ -1,7 +1,7 @@
 <template>
     <div class="login-component">
         <v-app id="inspire"> 
-            <form>
+            <form @submit.prevent>
                 <LoginEmailCo></LoginEmailCo>
                 <LoginBtn></LoginBtn>
                 <div class="google-signin btn text-center">
