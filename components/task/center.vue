@@ -4,15 +4,17 @@
                 <h4>Hi Zevanya Casey!</h4>
                 <div class="welcome-box div-flex-sp">
                     <h2>Welcome Back <img src="../../assets/images/hello.png" /></h2>
+                    <div>
+                    </div>
                     <select>
                         <option>Today</option>
-                        <option checked>This Week</option>
+                        <option>This Week</option>
                         <option>This Month</option>
                         <i class="uil uil-angle-down"></i>    
                     </select>
                 </div>
                 <div class="content-activity div-flex-sp">
-                    <div class="activity-chart">
+                    <div class="activity-chart chart">
                     </div>
                     <div class="tasks-data">
                         <h5>Task Summary</h5>
@@ -46,6 +48,9 @@
         </div>
     </div>
 </template>
+<script>
+
+</script>
 <style lang="scss" scoped>
 $h3Color:#1b2232;
 $pColor:#484e5a;
@@ -105,7 +110,6 @@ $backColor:#F6F8F9;
                 width:49%;
             }
             .activity-chart{
-                background: #945dff;
                 border-radius: 13px;
             }
             .tasks-data{
@@ -172,12 +176,13 @@ $backColor:#F6F8F9;
                         margin: 12px 0 0px;
                         p{
                             background: none;
-                            font-size: 11px;
+                            font-size: 12px;
                             color:$spanColor;
                             width:60%;
                             font-weight: 700;
                             padding: 0;
                             margin: 0;
+                            text-align:left;
                         }
                         span{
                             font-weight: 700;
@@ -213,6 +218,41 @@ $backColor:#F6F8F9;
             font-weight: 500;
             font-size: 14px;
         }
+    }
+}
+@media (max-width:1024px) {
+    .col-6-m{
+        width: 65%;
+    }
+    .col-3-m{
+        width: 32%;
+    }
+    .container-m{
+        width: 93%;
+    }
+    .left-side{
+        display: none;
+    }
+    
+}
+@media (max-width:900px) {
+    .posts-content{
+        width: 100%;
+    }
+    .right-side,.left-side{
+        display: none;
+    }
+}
+@media (max-width:550px) {
+    .content-activity{
+        display: block !important;
+        >div{
+            width: 90% !important;
+            margin: 0 auto;
+        }
+    }
+    .container-m{
+        width: 95% !important;
     }
 }
 </style>
