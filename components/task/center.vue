@@ -4,17 +4,31 @@
                 <h4>Hi Zevanya Casey!</h4>
                 <div class="welcome-box div-flex-sp">
                     <h2>Welcome Back <img src="../../assets/images/hello.png" /></h2>
-                    <div>
+                    <div class="aselect" :data-value="value" :data-list="list">
+                        <div class="selector" @click="visible = !visible">
+                            <div class="label">
+                                    <span>{{ value }}</span>
+                            </div>
+                            <i class="uil uil-angle-down arrow" v-show="!visible"></i>
+                            <i class="uil uil-angle-up arrow"  v-show="visible"></i>
+                            <div :class="{ hidden : !visible, visible }">
+                                <ul>
+                                    <li v-for="item in list" :key="item" @click="select(item)" :class="{ current : item === value }">{{ item }}</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-                    <select>
-                        <option>Today</option>
-                        <option>This Week</option>
-                        <option>This Month</option>
-                        <i class="uil uil-angle-down"></i>    
-                    </select>
                 </div>
                 <div class="content-activity div-flex-sp">
                     <div class="activity-chart chart">
+                        <div class="chart-div">
+                            <TaskLineChart  :chartData="chartData"
+                            :options="chartOptions"
+                            class="line-charts" 
+                            :width="300"
+                            :height="295"
+                            />
+                        </div>
                     </div>
                     <div class="tasks-data">
                         <h5>Task Summary</h5>
@@ -49,7 +63,59 @@
     </div>
 </template>
 <script>
-
+export default{
+data(){
+		return{
+            value: 'This Week',
+			list: ["Today","This Week","This month"],
+            visible: false,
+            chartData:{
+                labels:["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],
+                datasets:[{
+                    data:[1.9,2,2.8,2,2.8,2,2.8,2,2.8,6],
+                    axis:{y:10},
+                    start:'0',
+                    end:'10',
+                    label: 'Hours',
+                    borderColor: '#fff',
+                    borderWidth:2,
+                    color:'#FFF',
+                    pointBackgroundColor: '#6A3CFA',
+                    pointRadius: 6,
+                    pointborderColor:'#fff',
+                    pointHoverBackgroundColor: '#6A3CFA',
+                    pointHoverRadius: 0,
+                    fill: true,
+                    backgroundColor:'#7D56FA',
+                }
+                ]
+            },
+            chartOptions: {
+                maintainAspectRatio: false,
+                responsive: true,
+                tooltips: {
+                    backgroundColor: '#fff',
+                    titleFontColor: '#6A3CFA',
+                    bodyFontColor: '#6A3CFA',
+                    position: 'nearest',
+                    mode: 'nearest',
+                    intersect: 0,
+                    bodySpacing: 4,
+                    xPadding: 20,
+                },
+            }
+        }
+		},
+		methods: {
+			toggle() {
+                console.log("hi");
+				return visible = !visible;
+			},
+			select(option) {
+			    this.value = option;
+			}
+		}
+}
 </script>
 <style lang="scss" scoped>
 $h3Color:#1b2232;
@@ -83,6 +149,7 @@ $backColor:#F6F8F9;
             h2{
                 font-size: 23px;
                 font-weight: 700;
+                line-height: 40px;
                 img{
                     width: 20px !important;
                     margin-left:4px;
@@ -116,7 +183,7 @@ $backColor:#F6F8F9;
                 h5{
                     color:$pColor;
                     font-size: 15px;
-                    margin: 7px 0;
+                    margin: 7px 0 15px;
                 }
                 .projects{
                     background: #fff;
@@ -255,4 +322,58 @@ $backColor:#F6F8F9;
         width: 95% !important;
     }
 }
+
+.aselect {
+		.selector {
+			background:#fff;
+			position: relative;
+            z-index: 1;
+            border-radius: 16px;
+            width: 150px;
+			.arrow {
+				position: absolute;
+				right: 8px;
+				top: 4px;
+                transition-duration: 0.3s;
+                font-size: 26px;
+            }
+			.label {
+				display: block;
+				padding: 14px 8px;
+				font-size: 15px;
+				color: $hColor;
+                font-weight: 600;
+			}
+		}
+		ul {
+			width: 100%;
+			list-style-type: none;
+            border-radius: 8px;
+            overflow: hidden;
+            padding: 0;
+            margin: 0;
+			font-size: 15px;
+            color: $hColor;
+            font-weight: 600;
+			position: absolute;
+			z-index: 1;
+            background: #fff;
+		}
+		li {
+			padding: 12px;
+			color: $hColor;
+			&:hover {
+				color:$fancyColor;
+			}
+		}
+		.current {
+			background: #eaeaea;
+		}
+		.hidden {
+			visibility: hidden;
+		}
+		.visible {
+			visibility: visible;
+		}
+	}
 </style>

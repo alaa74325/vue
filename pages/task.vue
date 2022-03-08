@@ -14,6 +14,7 @@
     </div>
 </template>
 <script>
+
 </script>
 <style scoped lang="scss">
 $iconColor:#94949f;
@@ -26,6 +27,7 @@ $activeColor:#0061ff;
 .center{
     width: 52%;
 }
+
 .right-side{
     width: 28%;
 }
