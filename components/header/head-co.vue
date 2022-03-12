@@ -117,6 +117,10 @@ $activeColor:#0061ff;
                         height: 100%;
                     }
                 }
+                li:last-of-type{
+                    width: auto !important;
+                    
+                }
             }
         }
     }
