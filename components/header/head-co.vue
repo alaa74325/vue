@@ -4,19 +4,24 @@
             <div class="logo col-3-m">
                     <h1>Nadres</h1>
             </div>
-            <div class="menu col-6-m">
+            <div class="menu col-6-m display-menu" id="menu">
                 <ul>
-                    <li><n-link to="" @click="active()"><i class="uil uil-estate active-li"></i></n-link></li>
-                    <li><n-link to=""  @click="active()"><i class="uil uil-compass"></i></n-link></li>
-                    <li><n-link to="" @click="active()"><i class="uil uil-bag-alt"></i></n-link></li>
-                    <li><n-link to=""  @click="active()"><i class="uil uil-bell"></i></n-link></li>
-                    <li><n-link to=""  @click="active()"><i class="uil uil-envelope-heart"></i></n-link></li>
+                    <li><n-link to="" @click="active"><i class="uil uil-estate active-li"></i></n-link></li>
+                    <li><n-link to=""  @click="active"><i class="uil uil-compass"></i></n-link></li>
+                    <li><n-link to="" @click="active"><i class="uil uil-bag-alt"></i></n-link></li>
+                    <li><n-link to=""  @click="active"><i class="uil uil-bell"></i></n-link></li>
+                    <li><n-link to=""  @click="active"><i class="uil uil-envelope-heart"></i></n-link></li>
                 </ul>
             </div>
             <div class="right-menu col-3-m">
                 <ul>
-                    <li><n-link to=''><i class="uil uil-clipboard-notes"></i></n-link></li>
                     <li><n-link to=""><img src="../../assets/images/profilePic.jpg"></n-link></li>
+                    <li>
+                        <button class="menu-btn">
+                            <i class="uil uil-bars" v-if="menuShow" @click="menuShowing"></i>
+                            <i class="uil uil-multiply" v-if="!menuShow" @click="menuShowing"></i>
+                        </button>
+                    </li>
                 </ul>
             </div>
             </div>
@@ -28,6 +33,14 @@ $iconColor:#94949f;
 $bodyColor:#f3f5f7;
 $activeColor:#0061ff;
 /* general classes*/
+.menu-btn{
+    display: none;
+    i{
+        color: $iconColor;
+        font-size: 21px;
+        line-height: 34px;
+    }
+}
 .col-3-m{
     width: 24%;
 }
@@ -108,15 +121,62 @@ $activeColor:#0061ff;
         }
     }
 }
-
+@media (max-width:767px) {
+    .display-menu{
+        display:none;
+    }
+    .menu-btn{
+        display: block;
+    }
+    button{
+        outline:none;
+        i{
+            transition: 1s linear;
+        }
+    }
+    .menu{
+        width: 85px;
+        height: 100vh;
+        background: #0061ff;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        transition: 1s linear;
+        ul{
+            display: block !important;
+            li{
+                margin:30px auto 0 !important;
+                a{
+                    color: #fff !important;
+                }
+            }
+        }
+        
+    }
+    .active-li{
+        color:black
+    }
+}
 </style>
 <script>
 export default{
+    computed:{
+        menuShow(){
+            return this.$store.getters.menuShow;
+        }
+    },
     methods: {
         active: function(){
             console.log("hi");
             $this.$el.classList.add("active-li");
+        },
+        menuShowing:function(){
+            console.log("hi");
+            document.getElementById("menu").classList.toggle("display-menu");
+            return!menuShow;
         }
     },
-}   
+} 
+
 </script>

@@ -22,11 +22,12 @@
                 <div class="content-activity div-flex-sp">
                     <div class="activity-chart chart">
                         <div class="chart-div">
+                            <p>Activity <br> <span><strong>50</strong>  hours, <strong>50</strong> min on this week</span></p>
                             <TaskLineChart  :chartData="chartData"
                             :options="chartOptions"
                             class="line-charts" 
                             :width="300"
-                            :height="295"
+                            :height="270"
                             />
                         </div>
                     </div>
@@ -76,7 +77,6 @@ data(){
                     axis:{y:10},
                     start:'0',
                     end:'10',
-                    label: 'Hours',
                     borderColor: '#fff',
                     borderWidth:2,
                     color:'#FFF',
@@ -178,6 +178,25 @@ $backColor:#F6F8F9;
             }
             .activity-chart{
                 border-radius: 13px;
+                position: relative;
+                p{
+                    position: absolute;
+                    top:20px;
+                    left: 40px;
+                    color:$h3Color;
+                    font-size: 20px;
+                    font-weight: 700;
+                    span{
+                        color:$spanColor;
+                        font-size: 15px;
+                        font-weight: 400;
+                        strong{
+                            color:$h3Color
+                        }
+                        
+                    }
+
+                }
             }
             .tasks-data{
                 h5{
