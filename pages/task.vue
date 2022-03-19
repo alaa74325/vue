@@ -34,6 +34,7 @@ $activeColor:#0061ff;
 /* general classes*/
 .task-page{
     background: $bodyColor;
+    padding-top: 60px;
     >div.container-m{
         >div{
             margin-top: 20px;
@@ -42,25 +43,49 @@ $activeColor:#0061ff;
         }
     }
 }
-@media (max-width:1024px) {
-    .col-6-m{
+@media (min-width:1025px) {
+    /* Fixed sides */
+    
+}
+@media (max-width: 1024px) {
+    .center{
         width: 65%;
     }
-    .col-3-m{
+    .left-side{
         width: 32%;
     }
     .container-m{
         width: 93%;
     }
-    .left-side{
+    .right-side{
         display: none;
     }
+    /*.activity-message{
+        display: flex;
+        width: 100%;
+        padding: 5px  5%;
+        list-style: none;
+        justify-content: space-between;
+        li{
+            display: inline-block;
+            width: 35px;
+            height: 35px;
+            background: #fff;
+            text-align: center;
+            border-radius: 50%;
+            line-height: 35px;
+            i{
+                font-size: 20px;
+                color:$iconColor;
+            }
+        }
+    }*/
 }
 @media (max-width:900px) {
     .center{
         width: 100%;
     }
-    .right-side,.left-side{
+    .left-side{
         display: none;
     }
 }

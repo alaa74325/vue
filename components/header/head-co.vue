@@ -1,30 +1,24 @@
 <template>
-    <div class="head-content">
+    <div class="header-content">
         <div class="container-m">
             <div class="logo col-3-m">
                     <h1>Nadres</h1>
             </div>
-            <div class="menu col-6-m display-menu" id="menu">
-                <ul>
-                    <li><n-link to="" @click="active"><i class="uil uil-estate active-li"></i></n-link></li>
-                    <li><n-link to=""  @click="active"><i class="uil uil-compass"></i></n-link></li>
-                    <li><n-link to="" @click="active"><i class="uil uil-bag-alt"></i></n-link></li>
-                    <li><n-link to=""  @click="active"><i class="uil uil-bell"></i></n-link></li>
-                    <li><n-link to=""  @click="active"><i class="uil uil-envelope-heart"></i></n-link></li>
-                </ul>
-            </div>
+            <nav class="menu col-6-m" id="menu">
+                <n-link to="/user"><i class="uil uil-estate"></i></n-link>
+                <n-link to="/task"><i class="uil uil-compass"></i></n-link>
+                <n-link to="/group"><i class="uil uil-bag-alt"></i></n-link>
+                <n-link to="/activity"><i class="uil uil-bell"></i></n-link >
+                <n-link to="/message"><i class="uil uil-envelope-heart"></i></n-link >
+            </nav>
             <div class="right-menu col-3-m">
-                <ul>
-                    <li><n-link to=""><img src="../../assets/images/profilePic.jpg"></n-link></li>
-                    <li>
-                        <button class="menu-btn">
-                            <i class="uil uil-bars" v-if="menuShow" @click="menuShowing"></i>
-                            <i class="uil uil-multiply" v-if="!menuShow" @click="menuShowing"></i>
-                        </button>
-                    </li>
-                </ul>
+                <NuxtLink to=""><img src="../../assets/images/profilePic.jpg"></NuxtLink>
+                <button class="menu-btn">
+                    <i class="uil uil-bars" v-if="!menuShow" @click="menuShowing"></i>
+                    <i class="uil uil-multiply" v-else @click="menuShowing"></i>
+                </button>
             </div>
-            </div>
+        </div>
     </div>
 </template>
 <style lang="scss">
@@ -48,14 +42,13 @@ $activeColor:#0061ff;
     width:48%
 }
 .container-m{
-    width: 84% !important;
-    padding:10px 0;
+    width: 90% !important;
+    padding:7px 0;
     margin:0  auto !important;
     display:flex;
     justify-content: space-between;
 }
-
-.active-li{
+a.nuxt-link-active i{
     color:$activeColor;
 }
 /* Start styling */
@@ -65,69 +58,65 @@ $activeColor:#0061ff;
     font-size: 25px;
     padding: 0;
     margin: 0;
+    line-height: 40px;
 }
 
-.head-content{
+.header-content{
     width:100%;
     background: #fff;
     overflow: hidden;
     justify-content: space-between;
     align-content: center;
+    position: fixed;
+    z-index: 100;
     div.container-m{
-        >div{
-            ul{
-                margin: 0;
-                padding: 0;
+        >nav{
+            display: flex;
+            justify-content: center;
+            a {
                 text-decoration: none;
-                list-style: none;
-                display: flex;
-                justify-content: center;;
-                li{
-                    margin: 0 18px;
-                    a {
-                        text-decoration: none;
-                        font-size: 24px;
-                        font-weight: 200;
-                        align-items: center;
-                        display: grid;
-                        color:$iconColor;
-                        i{
-                            box-sizing: border-box;
-                            text-align: center;
-                        }
-                    }
-                    
+                align-items: center;
+                display: grid;
+                color:$iconColor;
+                display: inline-block;
+                margin: 0 18px;
+                line-height: 40px;
+                transition: all 1.5s linear;
+                position: relative;
+                i{
+                    box-sizing: border-box;
+                    text-align: center;
+                    font-size: 24px;
+                    font-weight: 200;
                 }
+            }
+            a:hover{
+                top:-5px;
             }
         }
         .right-menu{
-            ul{
+                display: flex;
                 justify-content: flex-end;
-                li{
+                >*{
                     width: 35px;
                     height: 35px;
                     border-radius: 50%;
                     overflow: hidden;
-                    margin:0 0 0 15px ;
+                    margin:0 0 0 12px ;
                     i{
                         text-align: center;
                     }
                     img{
                         width: 100%;
-                        height: 100%;
+                        height: 35px;
                     }
                 }
-                li:last-of-type{
-                    width: auto !important;
-                    
-                }
             }
-        }
     }
 }
 @media (max-width:767px) {
     .display-menu{
-        display:none;
+        left: 0 !important;
     }
     .menu-btn{
         display: block;
@@ -135,50 +124,44 @@ $activeColor:#0061ff;
     button{
         outline:none;
         i{
-            transition: 1s linear;
+            transition: all 2s linear;
         }
     }
     .menu{
         width: 85px;
+        position: relative;
         height: 100vh;
-        background: #0061ff;
+        background: #fff;
         position: fixed;
         top: 0;
-        left: 0;
+        left: -85px;
         z-index: 1000;
-        transition: 1s linear;
-        ul{
-            display: block !important;
-            li{
-                margin:30px auto 0 !important;
-                a{
-                    color: #fff !important;
-                }
-            }
+        transition: all .5s ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        a{
+            margin:15px auto 0 !important;
+            
         }
         
-    }
-    .active-li{
-        color:black
     }
 }
 </style>
 <script>
 export default{
-    computed:{
-        menuShow(){
-            return this.$store.getters.menuShow;
+    data(){
+        return{
+            menuShow:false,
         }
     },
+    computed:{
+        
+    },
     methods: {
-        active: function(){
-            console.log("hi");
-            $this.$el.classList.add("active-li");
-        },
         menuShowing:function(){
-            console.log("hi");
             document.getElementById("menu").classList.toggle("display-menu");
-            return!menuShow;
+            return this.menuShow=!this.menuShow;
         }
     },
 } 

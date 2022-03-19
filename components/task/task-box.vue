@@ -1,7 +1,7 @@
 <template>
     <div class="task-box">
         <div class="container-m div-flex-sp">
-            <div class="div-flex-sp">
+            <div class="div-flex">
                 <i class="uil uil-play-circle start-w"></i>
                 <p>Start from<br><i class="uil uil-clock"></i> <span>9:00am</span></p>
             </div>
@@ -33,6 +33,9 @@ $activeColor:#0061ff;
 .div-flex-sp{
     display: flex;
     justify-content: space-between;
+}
+.div-flex{
+    display: flex;
 }
 .task-box{
     width: 100%;
@@ -98,5 +101,19 @@ $activeColor:#0061ff;
         font-size: 18px;
     }
     
+}
+@media (max-width: 650px) {
+    .task-box{
+        .container-m{
+            justify-content: space-between;
+            flex-wrap: wrap;
+            >div{
+            width: 45%;
+            }
+            >div:nth-of-type(2){
+                width: 55%;
+            }
+        }
+    }
 }
 </style>

@@ -3,7 +3,7 @@
         <div class="search-area">
             <div class="container-m">
                 <div class="filter-box">
-                    <n-link to=""><i class="uil uil-plus"></i><span>Books</span></n-link>
+                    <n-link to="" :class="{add_active:addBook}"  @click="hi"><i class="uil uil-plus"></i><span>Books</span></n-link>
                     <n-link to=""><i class="uil uil-plus"></i><span>Groups</span></n-link>
                     <n-link to=""><i class="uil uil-plus"></i><span>Students</span></n-link>
                 </div>
@@ -23,8 +23,15 @@
 <script>
 export default {
     data(){
-        n:''
+        return{
+            addBook:true,
+        }
     },
+    methods:{
+        hi:function(e){
+            console.log(e.$el);
+        }
+    }
 }
 </script>
 <style scoped lang="scss">
@@ -34,6 +41,9 @@ $filter-color:#89a0fd;
 .container-m{
     width: 92% !important;
     display: block;
+}
+.add_active i{
+    color:red;
 }
 .search-input{
     width: 100%;
@@ -108,5 +118,27 @@ $filter-color:#89a0fd;
             color: $filter-color;
         }
     }
+}
+@media (max-width:425px) {
+    .filter-box a{
+        line-height: 25px;
+        padding: 3px;
+        font-size: 14px;
+    }
+    .search-input{ 
+        input{
+            font-size: 14px;
+            padding-left: 5px;
+        }
+        i{
+            display: none !important;
+        }
+        a {
+            font-size: 13px;
+            font-weight: 500;
+            right: 3px;
+            padding: 0 12px;
+        }
+    } 
 }
 </style>

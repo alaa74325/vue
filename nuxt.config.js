@@ -53,50 +53,48 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/auth-next',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
   ],
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/',
-  },
-  axios: {
     baseURL: 'https://gp.maleskndrany.com/api/',
     credentials: true,
-},
-auth: {
-    strategies: {
-        local: {
-            provider: 'local',
-            endpoints: {
-                login: {
-                    url: '/login',
-                },
-                logout: {
-                    url: '/logout',
-                    method: 'get',
-                },
-                user: {
-                    url: '/user',
-                },
-            },
-            token: {
-                property: '13|w4D8xVJw7yUOluuXQSDD7kD8nPMrBuugcvBoakWJ',
-                maxAge: 365 * 24 * 60 * 60,
-            },
-            user: {
-                property: false,
-            },
-        },
-    },
-    redirect: {
-        login: '/auth',
-        logout: '/auth',
-        callback: '/dashboard',
-        home: '/dashboard',
-    },
-},
+  },
+  auth: {
+      strategies: {
+          local: {
+              provider: 'local',
+              endpoints: {
+                  login: {
+                      url: '/login',
+                  },
+                  logout: {
+                      url: '/logout',
+                      method: 'get',
+                  },
+                  user: {
+                      url: '/user',
+                  },
+              },
+              token: {
+                  property: '13|w4D8xVJw7yUOluuXQSDD7kD8nPMrBuugcvBoakWJ',
+                  maxAge: 365 * 24 * 60 * 60,
+              },
+              user: {
+                  property: false,
+              },
+          },
+      },
+      redirect: {
+          login: '/auth',
+          logout: '/auth',
+          callback: '/dashboard',
+          home: '/dashboard',
+      },
+  },
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
