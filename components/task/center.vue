@@ -65,7 +65,7 @@
 </template>
 <script>
 export default{
-data(){
+    data(){
 		return{
             value: 'This Week',
 			list: ["Today","This Week","This month"],
@@ -80,13 +80,13 @@ data(){
                     borderColor: '#fff',
                     borderWidth:2,
                     color:'#FFF',
-                    pointBackgroundColor: '#6A3CFA',
+                    pointBackgroundColor: '#0061ff',
                     pointRadius: 6,
                     pointborderColor:'#fff',
                     pointHoverBackgroundColor: '#6A3CFA',
                     pointHoverRadius: 0,
                     fill: true,
-                    backgroundColor:'#7D56FA',
+                    backgroundColor:'#0061ff',
                 }
                 ]
             },
@@ -95,8 +95,8 @@ data(){
                 responsive: true,
                 tooltips: {
                     backgroundColor: '#fff',
-                    titleFontColor: '#6A3CFA',
-                    bodyFontColor: '#6A3CFA',
+                    titleFontColor: '#0061ff',
+                    bodyFontColor: '#0061ff',
                     position: 'nearest',
                     mode: 'nearest',
                     intersect: 0,
@@ -106,15 +106,15 @@ data(){
             }
         }
 		},
-		methods: {
-			toggle() {
-                console.log("hi");
-				return visible = !visible;
-			},
-			select(option) {
-			    this.value = option;
-			}
-		}
+    methods: {
+        toggle() {
+            console.log("hi");
+            return visible = !visible;
+        },
+        select(option) {
+            this.value = option;
+        }
+    }
 }
 </script>
 <style lang="scss" scoped>
@@ -275,7 +275,7 @@ $backColor:#F6F8F9;
                             color:$h3Color;
                         }
                         span.last{
-                            background: $fancyColor;
+                            background: $activeColor;
                             color:#fff;
                             padding: 1px 3px;
                             border-radius: 5px;

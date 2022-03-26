@@ -12,8 +12,25 @@
                 <p>24% complete</p>
                 <span></span>
             </div>
-            <div>
-                <button class="reminder-me"><i class="uil uil-stopwatch"></i>Reminder</button>
+            <div class="reminder-value">
+                <!-- <p class="time-date">{{valuedDate}}</p>
+                <p class="time-date">{{valuedTime}}</p> -->
+                <button class="reminder-me" @click="addReminder">
+                    <i class="uil uil-stopwatch"></i>Set Reminder</button>
+            </div>
+        </div>
+        <div class="reminder-pop" v-if="reminder">
+            <div class="pop-box">
+                <h4>Set Reminder</h4>
+                <span>No Reminder</span>
+                <span>In an Hour</span>
+                <span>In Two Hours</span>
+                <div class="body-pop">
+                    <input type="time" value="14:20" v-model="valueTime">
+                    <input type="date" id="start" v-model="valueDate" >
+                </div>
+                <button @click="reminderDone(valueDate,valueTime)">Done</button>
+                <button  @click="addReminder">Cancel</button>
             </div>
         </div>
     </div>
@@ -27,6 +44,124 @@ $fancyColor:#945dff;
 $bodyColor:#f3f5f7;
 $blueColor:#45bbfe;
 $activeColor:#0061ff;
+.reminder-value{
+    p{
+        text-align: center;
+        color: $blueColor !important;
+        font-size: 16px !important;
+        margin: 0 !important;
+    }
+
+}
+/* styling picking time  */
+input[type=time] {
+    border: none;
+    color: $hColor;
+    width: 80%;
+    margin: 15px 0;
+    outline: none;
+    font-size: 26px;
+    font-weight: 600;
+}
+input[type=time]::-webkit-datetime-edit-fields-wrapper {
+    display: flex;
+    justify-content: center;
+}
+input[type="time"]::-webkit-calendar-picker-indicator {
+    color:$blueColor;
+    font-size: 25px;
+}
+input[type=time]::-webkit-datetime-edit-text {
+    padding: 7px 4px;
+}
+input[type=time]::-webkit-datetime-edit-hour-field {
+    background-color: #f2f4f5;
+    border-radius: 15%;
+    padding: 7px 13px;
+}
+input[type=time]::-webkit-datetime-edit-minute-field {
+    background-color: #f2f4f5;
+    border-radius: 15%;
+    padding: 7px 13px;
+}
+input[type=time]::focus{
+    color: $h3Color !important;
+}
+input[type=time]::-webkit-datetime-edit-ampm-field {
+    background-color:$blueColor;
+    border-radius: 15%;
+    color: #fff;
+    padding: 7px 13px;
+    font-size: 25px !important;
+}
+input[type=time]::-webkit-clear-button {
+    display: none;
+}
+input[type=time]::-webkit-inner-spin-button {
+    display: none;
+}
+.reminder-pop{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: rgba(15,22,38,0.92157);
+    top: 0;
+    left: 0;
+    z-index: 100;
+    display: flex;
+    overflow: hidden;
+    h4{
+        color:$hColor;
+        margin: 30px 0;
+        font-size: 27px;
+        font-weight: 600;
+
+    }
+    span{
+        color:$pColor;
+        background: $bodyColor;
+        border-radius: 8px;
+        padding: 8px;
+        margin: 0 8px 25px;
+        display: inline-block;
+    }
+    input{
+        display: block;
+        outline: none;
+        text-align: center;
+        margin: 10px auto;
+        width: 80%;
+    }
+    input[type=date]{
+        color:$hColor;
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+    .pop-box{
+        width: 31%;
+        margin: auto;
+        background: #fff;
+        border-radius: 12px;
+        padding: 10px 15px 30px;
+        color: #333;
+        text-align: center;
+        margin: 0 10%;
+        button{
+            border-style: none;
+            background: #00b1ff;
+            color: #fff;
+            padding: 8px 16px;
+            margin: 10px 5px;
+            width: 37%;
+            font-weight: 500;
+            font-size: 17px;
+            border-radius: 8px;
+        }
+        button:last-of-type{
+            background: #e02e2e;
+        }
+    }
+}
 .container-m{
     width: 91% !important;
 }
@@ -68,7 +203,7 @@ $activeColor:#0061ff;
         }
     }
     i.start-w{
-        color: #945dff;
+        color:$blueColor;
         font-size:30px;
         margin-right: 7px;
     }
@@ -92,7 +227,7 @@ $activeColor:#0061ff;
 .reminder-me{
     padding: 2px 5px 5px;
     font-size: 13px;
-    color:$fancyColor;
+    color:$blueColor;
     border-radius: 7px;
     background: $bodyColor;
     font-weight: 600;
@@ -117,3 +252,29 @@ $activeColor:#0061ff;
     }
 }
 </style>
+
+<script>
+export default{
+    data(){
+        return{
+            reminder:false,
+            valueTime:(new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(11,5),
+            valueDate:(new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
+            valuedDate:'',
+            valuedTime:'',
+            currentTime:'',
+        }
+    },
+    methods:{
+        addReminder:function(){
+            console.log("hi");
+            return this.reminder=!this.reminder;
+        },
+        reminderDone:function(vDate,vTime){
+            this.valuedDate=vDate;
+            this.valuedTime=vTime;
+            return this.reminder=!this.reminder;
+        }
+    }
+}
+</script>

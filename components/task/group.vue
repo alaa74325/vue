@@ -4,7 +4,7 @@
             <button class="group-box" @click="show = !show">
                 <i class="uil uil-angle-down" v-if="!show"></i>
                 <i class="uil uil-angle-up" v-if="show"></i>
-            Group</button>
+            Course</button>
             <p v-if="show ">Sub Group</p>
             <p v-if="show">Sub Group</p>
         </div>

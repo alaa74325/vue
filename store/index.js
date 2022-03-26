@@ -7,7 +7,7 @@ Vue.use(Vuex);
 export default () => new Vuex.Store({
     state:()=>({
         counter:0,
-        
+        reminder:false,
     }),
     getters:Getters,
     mutations:Mutations,
