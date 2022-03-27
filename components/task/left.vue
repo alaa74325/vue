@@ -24,14 +24,31 @@
                                 <div class="text-area">
                                     <label>Description</label>
                                     <textarea placeholder="Enter Description" wrap="off" rows="5"></textarea>
-                                    <span>
-                                        <i class="uil uil-paperclip"></i>
-                                        <i class="uil uil-image-plus"></i>
-                                        <i class="uil uil-smile"></i>
-                                    </span>
+                                    <div class="text-area-footer">
+                                        <span>
+                                            <i class="uil uil-paperclip"></i>
+                                            <input type="file">
+                                        </span>
+                                        <span>
+                                            <i class="uil uil-image-plus"></i>
+                                            <input type="file" accept="image/*" placeholder="image">
+                                        </span>
+                                        <span>
+                                            <i class="uil uil-smile"></i>
+                                        </span>
+                                    </div>
                                 </div>
                                 <div class="sub-task">
-
+                                    <h5>Sub Tasks</h5>
+                                    <div  v-for="i in subTasks" :key="i">
+                                        <i class="uil uil-list-ui-alt"></i>
+                                        <input type="checkbox" :id="i">
+                                        <label :for="i">{{i}}</label>
+                                    </div>
+                                    <div class="add-subtask">
+                                        <input type="text" placeholder="Enter Sub Task" v-model="subTask">
+                                        <button @click="addSubTask(subTask)">Add Sub Task</button>
+                                    </div>
                                 </div>
                             </div>
                             <div class="main-footer">
@@ -202,7 +219,6 @@ label{
         overflow: hidden;
         .main-div{
             width: 68%;
-            height: 600px;
             background: $bodyColor;
             padding: 15px 20px;
             .main-head{
@@ -215,6 +231,7 @@ label{
                     font-size: 16px;
                     font-weight: 700;
                     line-height: 30px;
+                    color:$hColor;
                 }
                 button{
                     width: 17%;
@@ -280,7 +297,7 @@ label{
                     font-weight: 500;
                     display: inline-block;
                     margin-bottom: 8px;
-                    color:$h3Color
+                    color:$hColor
                 }
                 .text-area{
                     position: relative;
@@ -298,9 +315,8 @@ label{
                         overflow: hidden;
                         padding-bottom: 10px;
                     }
-                    span{
+                    .text-area-footer{
                         border-top: 1px solid $bodyColor;
-                        display: block;
                         width: 100%;
                         line-height: 25px;
                         background: #fff;
@@ -310,16 +326,81 @@ label{
                         bottom: 8px;
                         border-radius: 6px;
                         padding: 4px;
-                        i{
-                            color:$spanColor;
-                            font-size: 18px;
+                        span{
                             margin-right: 6px;
+                            position: relative;
+                            display: inline-block;
                             cursor: pointer;
+                            i{
+                                color:$spanColor;
+                                font-size: 19px;
+                            }
+                            input{
+                                opacity: 0;
+                                outline: 0;
+                                position: absolute;
+                                top: -7px;
+                                cursor: pointer;
+                            }
                         }
                     }
                 }
                 .sub-task{
                     overflow: hidden;
+                    border-left: 2px solid rgb(214, 210, 210);
+                    padding-left: 15px;
+                    h5{
+                        color:$hColor;
+                        font-size: 15px;
+                        margin-bottom: 15px;
+                    }
+                    >div{
+                        display: flex;
+                        input{
+                            display: inline-block;
+                            width: auto;
+                            height: 25px;
+                            width: 14px;
+                            margin: 0 8px;
+                        }
+                        label{
+                            font-size: 14px;
+                            color:$spanColor;
+                            font-weight: 600;
+                        }
+                        i{
+                            color:$spanColor;
+                            font-size: 20px;
+                            line-height: 20px;
+                        }
+                    }
+                    .add-subtask{
+                        display: block;
+                        margin: 10px 0;
+                        input{
+                            width: 100%;
+                            padding: 7px;
+                            font-size: 12px;
+                            margin: 0;
+                            display: block;
+                            height: auto;
+                        }
+                        input:focus{
+                            border: 2px solid #17d2f0;
+                        }
+                        button{
+                            position: relative;
+                            padding: 4px;
+                            background: #00b1ff;
+                            border: 0;
+                            color: #fff;
+                            border-radius: 6px;
+                            font-size: 14px;
+                            margin-top: 10px;
+                            display: inline-block;
+                            right: -84%;
+                        }
+                }
                 }
             }
             .main-footer{
@@ -536,6 +617,8 @@ export default{
             visibleA: false,
             statusP:true,
             status:'Public',
+            subTask:'',
+            subTasks:['Suggest a Discussion of statistics','Design create task page']
         }
 		},
     methods: {
@@ -570,8 +653,10 @@ export default{
                 li[i].style.display = "none";
                 }
             }
-            }
-
+            },
+        addSubTask(v){
+            return this.subTasks.push(v);
+        }    
     }
 }
 </script>
