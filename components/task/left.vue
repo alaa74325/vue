@@ -10,13 +10,15 @@
                 <div class="task-pop" v-if="!addTask">
                     <div class="pop-body">
                         <div class="main-div">
-                            <div class="main-head">
+                            <div class="main-head div-flex-sp">
                                 <p>Create Task</p>
-                                <button>
-                                    <span :class="{spanP: !statusP}" @click="statusToggle"></span>
-                                    {{status}}
-                                </button>
-                                <button><i class="uil uil-link-alt"></i></button>
+                                <div class="side">
+                                    <button>
+                                        <span :class="{spanP: !statusP}" @click="statusToggle"></span>
+                                        {{status}}
+                                    </button>
+                                    <button><i class="uil uil-link-alt"></i></button>
+                                </div>
                             </div>
                             <div class="main-content">
                                 <label>Task Name</label>
@@ -40,10 +42,10 @@
                                 </div>
                                 <div class="sub-task">
                                     <h5>Sub Tasks</h5>
-                                    <div  v-for="i in subTasks" :key="i">
+                                    <div  v-for="i in subTasks" :key="i"  @click=" i.statusDone=!i.statusDone">
                                         <i class="uil uil-list-ui-alt"></i>
-                                        <input type="checkbox" :id="i">
-                                        <label :for="i">{{i}}</label>
+                                        <input type="checkbox" :id="i.id">
+                                        <label :for="i.id" :class='{ doneTask : i.statusDone }' @click="subtaskDone">{{i.title}}</label>
                                     </div>
                                     <div class="add-subtask">
                                         <input type="text" placeholder="Enter Sub Task" v-model="subTask">
@@ -59,6 +61,14 @@
                             </div>
                         </div>
                         <div class="side-div">
+                            <div class="select-project div-flex-sp">
+                                <p><i class="uil uil-apps"></i>Select Project</p>
+                                <i class="uil uil-angle-right-b"></i>
+                            </div>
+                            <div class="title-options div-flex-sp">
+                                <p>Attributes</p>
+                                <i class="uil uil-sitemap"></i>
+                            </div>
                             <div class="create-option">
                                 <label>Status</label>
                                 <div class="aselect" :data-value="value" :data-list="list">
@@ -138,6 +148,10 @@ $bodyColor:#f3f5f7;
 $activeColor:#0061ff;
 .container-m{
     display: block !important;
+}
+.div-flex-sp{
+    display: flex;
+    justify-content: space-between;
 }
 .left-content{
     background:#fff;
@@ -222,19 +236,21 @@ label{
             background: $bodyColor;
             padding: 15px 20px;
             .main-head{
-                display: flex;
                 margin: auto;
                 margin-bottom: 15px;
                 width: 97%;
+                .side{
+                    position: relative;
+                    display: flex;
+                    justify-content: space-around;
+                }
                 p{
-                    width: 75%;
                     font-size: 16px;
                     font-weight: 700;
                     line-height: 30px;
                     color:$hColor;
                 }
                 button{
-                    width: 17%;
                     font-size: 15px;
                     line-height: 15px;
                     align-content: center;
@@ -270,7 +286,6 @@ label{
                     }
                 }
                 button:last-of-type{
-                    width: 8%;
                     i{
                         color:$spanColor;
                         font-weight: 600;
@@ -368,6 +383,9 @@ label{
                             color:$spanColor;
                             font-weight: 600;
                         }
+                        .doneTask{
+                            text-decoration: line-through;
+                        }
                         i{
                             color:$spanColor;
                             font-size: 20px;
@@ -428,11 +446,51 @@ label{
         }
         .side-div{
             width: 32%;
-            margin-top: 30px;
+            margin-top: 15px;
             position: relative;
+            .select-project{
+                cursor: pointer;
+            }
+            .select-project,.title-options{
+                width: 90%;
+                margin: 15px auto;
+                padding: 8px;
+                box-shadow: 1px 1px 8px 3px #eaeaea;
+                border-radius: 5px;
+                overflow: hidden;
+                p{
+                    color:$hColor;
+                    font-size: 15px;
+                    font-weight: 500;
+                    margin-bottom: 0;
+                    i{
+                        color:#17d2f0;
+                        font-size: 18px;
+                        margin-right: 7px;
+                    }
+                }
+                i{
+                    color:$spanColor;
+                    font-size: 21px;
+                }
+            }
+            .title-options{
+                box-shadow: none;
+                border-bottom: 1px solid #eaeaea;
+                border-radius: 0;
+                p{
+                    font-weight: 600;
+                    font-size: 12px;
+                    text-transform: uppercase;
+                    line-height: 20px;
+                }
+                i{
+                    font-size: 17px;
+                }
+            }
             .create-option{
                 width: 90%;
-                margin: 18px auto;
+                margin: 20px auto;
                 display: flex;
                 label{
                     font-size: 15px;
@@ -618,7 +676,8 @@ export default{
             statusP:true,
             status:'Public',
             subTask:'',
-            subTasks:['Suggest a Discussion of statistics','Design create task page']
+            subTasks:[{id:1,title:'Suggest a Discussion of statistics',statusDone:true},
+            {id:2,title:'Design create task page',statusDone:false}]
         }
 		},
     methods: {
@@ -655,7 +714,10 @@ export default{
             }
             },
         addSubTask(v){
-            return this.subTasks.push(v);
+            return this.subTasks.push({id:this.subTasks.length+1,title:v,statusDone:false});
+        },
+        subtaskDone(event){
+            event.target.classList.toggle('doneTask');
         }    
     }
 }
