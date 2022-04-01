@@ -7,7 +7,7 @@
                     <i class="uil uil-plus-circle"></i>
                 </button>
                 <n-link to="">Overview</n-link>
-                <div class="task-pop" v-if="!addTask">
+                <div class="task-pop" v-if="addTask">
                     <div class="pop-body">
                         <div class="main-div">
                             <div class="main-head div-flex-sp">
