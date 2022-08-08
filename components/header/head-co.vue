@@ -4,19 +4,21 @@
             <div class="logo col-3-m">
                     <h1>Nadres</h1>
             </div>
+            <!--  v-if="$auth.loggedIn"-->
             <nav class="menu col-6-m" id="menu">
                 <n-link to="/user"><i class="uil uil-estate"></i></n-link>
                 <n-link to="/task"><i class="uil uil-compass"></i></n-link>
-                <n-link to="/group"><i class="uil uil-bag-alt"></i></n-link>
+                <n-link to="/groups"><i class="uil uil-bag-alt"></i></n-link>
                 <n-link to="/activity"><i class="uil uil-bell"></i></n-link >
                 <n-link to="/message"><i class="uil uil-envelope-heart"></i></n-link >
             </nav>
-            <div class="right-menu col-3-m">
+            <div class="right-menu col-3-m"  >
                 <NuxtLink to=""><img src="../../assets/images/profilePic.jpg"></NuxtLink>
-                <button class="menu-btn">
-                    <i class="uil uil-bars" v-if="!menuShow" @click="menuShowing"></i>
-                    <i class="uil uil-multiply" v-else @click="menuShowing"></i>
-                </button>
+                <div class="account">
+                    <p>Your Name</p>
+                    <nuxt-link to="">More Details</nuxt-link>
+                    <a >Log Out</a>
+                </div>
             </div>
         </div>
     </div>
@@ -27,8 +29,9 @@ $iconColor:#94949f;
 $bodyColor:#f3f5f7;
 $activeColor:#0061ff;
 /* general classes*/
+
+
 .menu-btn{
-    display: none;
     i{
         color: $iconColor;
         font-size: 21px;
@@ -95,25 +98,48 @@ a.nuxt-link-active i{
             }
         }
         .right-menu{
-                display: flex;
-                justify-content: flex-end;
-                >*{
-                    width: 35px;
+                position: relative;
+                img{
+                    width: 37px;
                     height: 35px;
-                    border-radius: 50%;
-                    overflow: hidden;
-                    margin:0 0 0 12px ;
-                    i{
-                        text-align: center;
-                    }
-                    img{
-                        width: 100%;
-                        height: 35px;
-                    }
+                    border-radius: 10%;
+                    border:2px solid rgb(215, 211, 211);
+                    float:right
                 }
             }
     }
 }
+.account::before{
+    content: "";
+    position: fixed;
+    top: -20px;
+    background: red;
+    height: 20px;
+    width: 40px;
+    border-top-right-radius:3px;
+    border-top-left-radius:3px ;
+}
+
+.account{
+    display: none;
+    transition: all 0.8s  ease-in-out;
+    padding: 10px;
+    border-radius: 5%;
+    position: fixed;
+    top: 50px;
+    width: 200px;
+    height: 116px;
+    right: 0;
+    background: rgb(228, 218, 218);
+    margin-right: 3%;
+}
+.right-menu:hover{
+    position: relative;
+    .account{
+        display: block;
+    }
+}
+
 @media (max-width:767px) {
     .display-menu{
         left: 0 !important;
@@ -149,21 +175,27 @@ a.nuxt-link-active i{
 }
 </style>
 <script>
+import axios from 'axios';
 export default{
     data(){
         return{
-            menuShow:false,
+            menuShow:true,
         }
     },
     computed:{
         
     },
     methods: {
-        menuShowing:function(){
-            document.getElementById("menu").classList.toggle("display-menu");
-            return this.menuShow=!this.menuShow;
-        }
+        
     },
+    /* async created(){
+        const response= await axios.get('user',{
+            headers:{
+                Authorization:'Bearer' + localStorage.setItem('token')
+            }
+        });
+        
+    }    */
 } 
 
 </script>

@@ -1,40 +1,56 @@
 <template>
-    <div class="task-box">
-        <div class="container-m div-flex-sp">
-            <div class="div-flex">
-                <i class="uil uil-play-circle start-w"></i>
-                <p>Start from<br><i class="uil uil-clock"></i> <span>9:00am</span></p>
-            </div>
-            <div>
-                <p>Website Redesign<br><i class="uil uil-paperclip"></i><n-link to="">www.zoom.com</n-link><i class="uil uil-comment-alt-dots"></i><span>8 comments</span></p>
-            </div>
-            <div class="progress-t">
-                <p>24% complete</p>
-                <span></span>
-            </div>
-            <div class="reminder-value">
-                <!-- <p class="time-date">{{valuedDate}}</p>
-                <p class="time-date">{{valuedTime}}</p> -->
-                <button class="reminder-me" @click="addReminder">
-                    <i class="uil uil-stopwatch"></i>Set Reminder</button>
-            </div>
-        </div>
-        <div class="reminder-pop" v-if="reminder">
-            <div class="pop-box">
-                <h4>Set Reminder</h4>
-                <span>No Reminder</span>
-                <span>In an Hour</span>
-                <span>In Two Hours</span>
-                <div class="body-pop">
-                    <input type="time" value="14:20" v-model="valueTime">
-                    <input type="date" id="start" v-model="valueDate" >
+    <div>
+        <ul v-for="task in tasks" :key="task.id">
+            <div class="task-box">
+                <div class="container-m div-flex-sp">
+                    <div class="div-flex">
+                        <i class="uil uil-play-circle start-w"></i>
+                        <p>Start from<br><i class="uil uil-clock"></i> <span>9:00am</span></p>
+                    </div>
+                    <div>
+                        <p>{{task.name}}<br><i class="uil uil-paperclip"></i><n-link :to="task.link">www.zoom.com</n-link><i class="uil uil-comment-alt-dots"></i><span>8 comments</span></p>
+                    </div>
+                    <div class="progress-t">
+                        <p>24% complete</p>
+                        <span></span>
+                    </div>
+                    <div class="reminder-value">
+                        <!-- <p class="time-date">{{valuedDate}}</p>
+                        <p class="time-date">{{valuedTime}}</p> -->
+                        <button class="reminder-me" @click="addReminder">
+                            <i class="uil uil-stopwatch"></i>Set Reminder</button>
+                    </div>
                 </div>
-                <button @click="reminderDone(valueDate,valueTime)">Done</button>
-                <button  @click="addReminder">Cancel</button>
-            </div>
+                <div class="reminder-pop" v-if="reminder">
+                    <div class="pop-box">
+                        <h4>Set Reminder</h4>
+                        <span>No Reminder</span>
+                        <span>In an Hour</span>
+                        <span>In Two Hours</span>
+                        <div class="body-pop">
+                            <input type="time" value="14:20" v-model="valueTime">
+                            <input type="date" id="start" v-model="valueDate" >
+                        </div>
+                        <button @click="reminderDone(valueDate,valueTime)">Done</button>
+                        <button  @click="addReminder">Cancel</button>
+                    </div>
+                </div>
         </div>
+        </ul>
     </div>
+    
 </template>
+<script>
+import {mapState,mapGetters,mapActions,mapMutations} from 'vuex';
+export default{
+    computed: {
+        ...mapState(['tasks']),
+    },
+    methods:{
+        ...mapActions(['gettasks']),
+    }
+}    
+</script>
 <style lang="scss" scoped>
 $h3Color:#1b2232;
 $pColor:#484e5a;

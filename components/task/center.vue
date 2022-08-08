@@ -57,9 +57,6 @@
                     <n-link to="">See All Tasks<i class="uil uil-angle-right"></i></n-link>
                 </div>
                 <TaskBox></TaskBox>
-                <TaskBox></TaskBox>
-                <TaskBox></TaskBox>
-                <TaskBox></TaskBox>
         </div>
     </div>
 </template>

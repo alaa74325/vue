@@ -1,7 +1,7 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'user-panel',
+    title: 'Nadres',
     script:[
       {src:"https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js", integrity:"sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p", crossorigin:"anonymous"},
       {
@@ -56,11 +56,12 @@ export default {
     '@nuxtjs/auth-next',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+    
   ],
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: 'https://gp.maleskndrany.com/api/',
+    baseURL: 'https://gp.maleskndrany.com/api/student',
     credentials: true,
   },
   auth: {
@@ -70,13 +71,17 @@ export default {
               endpoints: {
                   login: {
                       url: '/login',
+                      method: 'post',
+                      propertyName:'data.token'
                   },
                   logout: {
                       url: '/logout',
-                      method: 'get',
+                      method: 'post',
                   },
                   user: {
                       url: '/user',
+                      method: 'get',
+                      propertyName:'data'
                   },
               },
               token: {
@@ -101,8 +106,6 @@ export default {
       lang: 'en',
     },
   },
-
-
   
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {

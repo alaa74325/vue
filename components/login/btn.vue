@@ -1,9 +1,10 @@
 <template>
     <div class="btn">
-        <button @click="loading=!loading">Login</button>
-        <div class="load" v-if="loading">
-            <span class="spiner"></span>
-        </div>
+        <button type="submit">
+            <slot>
+                login
+            </slot>
+        </button>
     </div>
 
 </template>
@@ -50,24 +51,14 @@ $font-family: 'Montserrat', sans-serif;
 
     }
 }
-@keyframes spiner {
-    from{
-        transform: rotate(0);
-    }
-    to{
-        transform: rotate(360deg);
-    }
-}
 
 </style>
 <script>
 export default{
     data () {
     return {
-        loading: false,
     }
     },
-    props:[],
     methods:{
     }
 }

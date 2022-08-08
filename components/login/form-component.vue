@@ -1,8 +1,31 @@
 <template>
     <div class="login-component">
         <v-app id="inspire"> 
-            <form @submit.prevent>
-                <LoginEmailCo></LoginEmailCo>
+            <form @submit.prevent='loginf'>
+                <div class="email-co">
+                    <v-text-field
+                                    outlined
+                                    label="Email"
+                                    append-icon="mdi-at"
+                                    name="email" 
+                                    v-model="email"
+                                    required
+                                    ></v-text-field>
+                    <v-text-field
+                                        outlined
+                                        label="Password"
+                                        append-icon="mdi-lock"
+                                        name="password" 
+                                        v-model="password" 
+                                        required
+                                        type="password"
+                    ></v-text-field>
+                    <div class="check-field">
+                                <input type="checkbox" name="remember-me" id="remember-me">
+                                <label for="remember-me">Remember Me</label>
+                                <span>Recovery Password</span>
+                    </div> 
+                </div>
                 <LoginBtn></LoginBtn>
                 <div class="google-signin btn text-center">
                     <img src="https://img.icons8.com/color/48/000000/google-logo.png"/>
@@ -10,13 +33,43 @@
                 </div>
                 <div class="sign-up-field"> 
                     <p>Don't have an account yet?</p>
-                    <n-link to="/sign-up">Sign Up</n-link>
+                    <n-link to="/signUp">Sign Up</n-link>
                 </div>
             </form>
         </v-app>
     </div>
 </template>
-
+<script>
+import {mapActions,mapGetters} from 'vuex';
+export default {
+    data() {
+    return {
+        }
+    },
+    computed:{
+    ...mapGetters(['emailLogin','passwordLogin','passworderror','emailerror']),
+            email:{
+                get(){
+                    return this.$store.getters.emailLogin
+                },
+                set(value){
+                    this.$store.commit('updateEmailLogin',value)
+                }
+            },
+            password:{
+                get(){
+                    return this.$store.getters.passwordLogin
+                },
+                set(value){
+                    this.$store.commit('updatePasswordLogin',value)
+                }
+            },
+        },
+    methods: {
+        ...mapActions(['loginf']),
+    }
+}
+</script>
 <style lang="scss" scoped>
 $background-slider:#2a5dc4;
 $btn-background:#6E95E9;

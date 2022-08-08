@@ -4,13 +4,36 @@ import Getters from "./getters";
 import Actions from "./actions";
 import Mutations from "./mutations";
 Vue.use(Vuex);
+//import axios from 'axios';
+
 export default () => new Vuex.Store({
     state:()=>({
-        counter:0,
-        reminder:false,
+        register:{
+            name:'',
+            email:'',
+            password:'',
+        },
+        login:{
+            email:'',
+            password:''
+        },
+        errors:{
+            name:'',
+            email:'',
+            password:'',
+        }
+        
     }),
+
     getters:Getters,
     mutations:Mutations,
     actions:Actions,
-    modules:{}
+    modules:{
+        todos:{
+            namespaced:true
+        },
+        tasks:{
+            namespaced:true
+        },
+    }
 });

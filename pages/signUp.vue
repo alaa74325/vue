@@ -5,15 +5,43 @@
         </div>
         <div class="form-content">
             <LoginTextLoginCo></LoginTextLoginCo>
-            <form>
+            <form method="post" @submit.prevent="registerf">
                 <v-app id="inspire">
                         <v-text-field
                                 outlined
                                 label="Full Name"
                                 append-icon="mdi-account"
+                                name="name"
+                                v-model="name"
+                                required
                         ></v-text-field>
-                <LoginEmailCo></LoginEmailCo>
-                <LoginBtn></LoginBtn>
+                        <p class="errors">{{nameerror}}</p>
+                <v-text-field
+                                outlined
+                                label="Email"
+                                append-icon="mdi-at"
+                                name="email" 
+                                v-model="email"
+                                required
+                                ></v-text-field>
+                                <p class="errors">{{emailerror}}</p>
+                <v-text-field
+                                    outlined
+                                    label="Password"
+                                    append-icon="mdi-lock"
+                                    @click="showpassword= !showpassword"
+                                    name="password"
+                                    
+                                    v-model="password"
+                                    type="password"
+                ></v-text-field>
+                <p class="errors">{{passworderror}}</p>
+                <div class="check-field">
+                            <input type="checkbox" name="remember-me" id="remember-me">
+                            <label for="remember-me">Remember Me</label>
+                            <span>Recovery Password</span>
+                </div>
+                <LoginBtn>Sign Up</LoginBtn>
                 <div class="google-signin btn text-center">
                     <img src="https://img.icons8.com/color/48/000000/google-logo.png"/>
                     <n-link to="">Sign in with Google</n-link>
@@ -28,9 +56,45 @@
         </div>    
 </template>
 <script>
+import {mapActions,mapGetters} from 'vuex';
 export default {
-    layout: "empty"
-};
+    
+    data(){
+        return{
+        } 
+    },
+    layout: "empty",
+    computed:{
+        ...mapGetters(['name','email','password','nameerror','passworderror','emailerror']),
+        name:{
+            get(){
+                return this.$store.getters.name
+            },
+            set(value){
+                this.$store.commit('updateName',value)
+            }
+        },
+        email:{
+            get(){
+                return this.$store.getters.email
+            },
+            set(value){
+                this.$store.commit('updateEmail',value)
+            }
+        },
+        password:{
+            get(){
+                return this.$store.getters.password
+            },
+            set(value){
+                this.$store.commit('updatePassword',value)
+            }
+        },
+    },
+    methods: {
+        ...mapActions(['registerf']),
+    }
+}
 </script>
 <style  lang="scss"  >
 $background-slider:#2a5dc4;
@@ -38,6 +102,12 @@ $btn-background:#6E95E9;
 $font-collor:#999;
 $border-color:#d9d9d9;
 $font-family: 'Montserrat', sans-serif;
+.errors{
+    color:red;
+    margin: 0;
+    font-size: 12px;
+    background: none !important;
+}
 @media (max-width:1000px) {
     .login-page,.sign-up{
         justify-content: flex-end;
