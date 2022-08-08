@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from 'axios' ;
 const actions={
     async registerf({getters,commit,state}){
         try{
